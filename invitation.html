@@ -86,7 +86,7 @@
     <div class="background-animate"></div>
 
     <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        <source src="wedding-music.mp3" type="audio/mpeg">
     </audio>
 
     <div class="music-toggle" onclick="toggleAudio(event)">
@@ -134,7 +134,7 @@
                         <i class="far fa-calendar-plus"></i>
                     </a>
                     <h6>Wedding Ceremony</h6>
-                    <p>May 6, 2026 | 10:30 AM Onwards</p>
+                    <p>May 6, 2026 | 10:30 PM Onwards</p>
                 </div>
             </div>
 
@@ -161,7 +161,6 @@
     </div>
 
     <script>
-        // Countdown to Reception Start
         const eventTime = new Date("May 5, 2026 18:30:00").getTime();
         function runTimer() {
             const now = new Date().getTime();
@@ -174,7 +173,6 @@
         }
         setInterval(runTimer, 1000);
 
-        // Music Logic
         const audio = document.getElementById('bgMusic');
         const icon = document.getElementById('musicIcon');
         let playing = false;
@@ -183,4 +181,3 @@
     </script>
 </body>
 </html>
-
