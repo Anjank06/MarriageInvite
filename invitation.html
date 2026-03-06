@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Anjan & Chandana | Wedding Invite</title>
+    <title>Anjan & Chandana | Wedding Invitation</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Montserrat:wght@300;500;700&family=Birthstone&display=swap" rel="stylesheet">
@@ -13,23 +13,16 @@
             --pastel-bg: #fdf6f0;
             --text-contrast: #2d2d2d;
             --accent-gold: #b8860b;
-            --glass-white: rgba(255, 255, 255, 0.94);
-            --loop-speed: 24s;
+            --glass-white: rgba(255, 255, 255, 0.95);
+            --loop-speed: 25s;
         }
 
-        /* --- MOBILE CANVAS LOCK --- */
         body, html {
-            height: 100%; margin: 0; padding: 0;
-            background-color: var(--pastel-bg);
-            color: var(--text-contrast);
-            font-family: 'Montserrat', sans-serif;
-            overflow: hidden; /* Prevent scrolling on mobile */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 100%; margin: 0; padding: 0; background-color: var(--pastel-bg);
+            color: var(--text-contrast); font-family: 'Montserrat', sans-serif;
+            overflow: hidden; display: flex; justify-content: center; align-items: center;
         }
 
-        /* Background Animation */
         .background-animate {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(-45deg, #fdf6f0, #f7e7e8, #e8f1f2, #fdf6f0);
@@ -37,81 +30,55 @@
         }
         @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        /* Perspective for Mobile 3D */
-        .viewport {
-            width: 100vw; height: 100dvh; /* Dynamic viewport height for mobile browsers */
-            display: flex; justify-content: center; align-items: center;
-            perspective: 1500px; 
-        }
+        .viewport { width: 100vw; height: 100dvh; display: flex; justify-content: center; align-items: center; perspective: 1500px; }
 
-        /* --- THE CARD --- */
         .glass-card {
-            background: var(--glass-white);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 30px;
-            padding: 30px 20px;
-            text-align: center;
-            width: 90%;
-            max-width: 400px; /* Locked to mobile width */
-            height: 80vh; /* Locked to mobile height */
-            max-height: 700px;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.1);
-            position: absolute;
-            backface-visibility: hidden;
+            background: var(--glass-white); backdrop-filter: blur(25px); border: 1px solid white;
+            border-radius: 35px; padding: 30px 20px; text-align: center;
+            width: 92%; max-width: 400px; height: 85vh; max-height: 720px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.1); position: absolute; backface-visibility: hidden;
             display: flex; flex-direction: column; justify-content: space-between;
         }
 
-        /* 3D Loop - Optimized for narrow screens */
+        /* 3D Core */
         #intro { z-index: 10; transform-origin: left center; animation: loopCover var(--loop-speed) ease-in-out infinite; }
         #details { z-index: 5; animation: loopDetails var(--loop-speed) ease-in-out infinite; }
 
         @keyframes loopCover {
             0%, 10% { transform: rotateY(0deg); opacity: 1; visibility: visible; }
-            20%, 80% { transform: rotateY(-105deg); opacity: 0; visibility: hidden; } /* Adjusted angle for mobile */
+            20%, 80% { transform: rotateY(-105deg); opacity: 0; visibility: hidden; }
             90%, 100% { transform: rotateY(0deg); opacity: 1; visibility: visible; }
         }
         @keyframes loopDetails {
-            0%, 12% { transform: scale(0.95); opacity: 0; }
-            22%, 78% { transform: scale(1); opacity: 1; }
-            88%, 100% { transform: scale(0.95); opacity: 0; }
+            0%, 12% { transform: scale(0.95); opacity: 0; visibility: hidden; }
+            22%, 78% { transform: scale(1); opacity: 1; visibility: visible; }
+            88%, 100% { transform: scale(0.95); opacity: 0; visibility: hidden; }
         }
 
-        /* --- CONTENT STYLES --- */
-        .sanskrit { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--accent-gold); font-weight: 600; line-height: 1.5; margin-bottom: 10px; }
-        .names { font-family: 'Birthstone', cursive; font-size: 3.5rem; line-height: 0.8; margin: 15px 0; }
-        .main-tag { font-size: 0.6rem; letter-spacing: 4px; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; }
+        /* Content Blocks */
+        .shlok { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--accent-gold); font-weight: 600; line-height: 1.5; margin-bottom: 5px; }
+        .names { font-family: 'Birthstone', cursive; font-size: 3.5rem; line-height: 0.8; margin: 10px 0; }
+        .tag { font-size: 0.6rem; letter-spacing: 4px; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; }
         
-        .event-item { background: rgba(0,0,0,0.03); border-radius: 15px; padding: 10px; border-left: 4px solid var(--accent-gold); margin-bottom: 8px; text-align: left; }
-        .event-item h6 { font-size: 0.85rem; font-weight: 700; margin: 0; }
-        .event-item p { font-size: 0.75rem; margin: 0; color: #666; }
-
-        .food-badge { background: rgba(184, 134, 11, 0.08); border: 1px dashed var(--accent-gold); border-radius: 12px; padding: 8px; font-size: 0.7rem; font-weight: 600; margin: 10px 0; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .event-card { background: rgba(0,0,0,0.03); border-radius: 15px; padding: 10px; border-left: 4px solid var(--accent-gold); margin-bottom: 6px; text-align: left; position: relative; }
+        .cal-mini { position: absolute; right: 10px; top: 12px; color: var(--accent-gold); font-size: 0.8rem; text-decoration: none; border: 1px solid var(--accent-gold); padding: 2px 8px; border-radius: 10px; }
+        
+        .food-tag { background: rgba(184, 134, 11, 0.08); border: 1px dashed var(--accent-gold); border-radius: 12px; padding: 6px; font-size: 0.65rem; font-weight: 600; margin: 8px 0; display: flex; align-items: center; justify-content: center; gap: 6px; }
 
         /* Countdown */
-        .countdown { display: flex; justify-content: center; gap: 8px; margin: 10px 0; }
-        .unit { width: 45px; }
-        .unit span { display: block; font-weight: 700; font-size: 1rem; }
+        .timer { display: flex; justify-content: center; gap: 10px; margin: 5px 0; }
+        .unit span { display: block; font-weight: 700; font-size: 1.1rem; color: var(--text-contrast); }
         .unit label { font-size: 0.45rem; text-transform: uppercase; color: var(--accent-gold); }
 
-        /* --- CHARIOT --- */
-        .chariot-path {
-            position: absolute; bottom: 15px; left: -100px; width: 60px; height: 40px;
-            animation: travel 10s linear infinite; opacity: 0.7;
-        }
-        @keyframes travel { 0% { left: -80px; } 100% { left: 110%; } }
+        /* Animated Chariot */
+        .chariot { position: absolute; bottom: 10px; left: -100px; width: 60px; height: 35px; animation: ride 12s linear infinite; opacity: 0.6; }
+        @keyframes ride { 0% { left: -80px; } 100% { left: 110%; } }
         .wheel { animation: spin 1.5s linear infinite; transform-origin: center; }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Music Controls */
-        .music-btn {
-            position: fixed; top: 20px; right: 20px; z-index: 100;
-            background: white; width: 40px; height: 40px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); color: var(--accent-gold); font-size: 0.8rem;
-        }
-
-        .btn-map { background: var(--text-contrast); color: white; border-radius: 50px; font-size: 0.75rem; padding: 8px 20px; text-decoration: none; width: 100%; display: block; margin-top: 10px; }
+        .music-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; background: white; width: 42px; height: 42px; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); color: var(--accent-gold); }
+        .btn-action { background: var(--text-contrast); color: white; border-radius: 50px; font-size: 0.75rem; padding: 10px; text-decoration: none; width: 100%; display: block; margin-top: 5px; transition: 0.3s; }
+        .btn-action:hover { background: var(--accent-gold); color: white; }
     </style>
 </head>
 <body onclick="initAudio()">
@@ -122,7 +89,7 @@
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="music-btn" onclick="toggleAudio(event)">
+    <div class="music-toggle" onclick="toggleAudio(event)">
         <i id="musicIcon" class="fas fa-music"></i>
     </div>
 
@@ -130,17 +97,17 @@
         
         <div id="intro" class="glass-card">
             <div>
-                <div class="sanskrit">अर्धं भार्या मनुष्यस्य<br>भार्या श्रेष्ठतमः सखा।</div>
-                <div class="main-tag">A Union of Souls</div>
+                <div class="shlok">अर्धं भार्या मनुष्यस्य<br>भार्या श्रेष्ठतमः सखा।</div>
+                <div class="tag">The Sacred Union</div>
             </div>
             
             <div class="names">
                 Anjan Kumar<br>&<br>Chandana S Shetty
             </div>
 
-            <div>
-                <p class="small text-muted px-2">With the blessings of our parents, we invite you to share our joy.</p>
-                <div class="chariot-path">
+            <div style="position: relative; height: 100px;">
+                <p class="small text-muted" style="font-size: 0.75rem;">Together with our families, we invite you to bless our new beginning.</p>
+                <div class="chariot">
                     <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 40 L80 40 L70 20 L30 20 Z" fill="#b8860b" />
                         <circle class="wheel" cx="35" cy="45" r="7" fill="none" stroke="#2d2d2d" stroke-width="2" stroke-dasharray="3,2"/>
@@ -151,60 +118,68 @@
         </div>
 
         <div id="details" class="glass-card">
-            <div class="main-tag">Wedding Itinerary</div>
+            <div class="tag">Celebration Details</div>
 
             <div class="itinerary">
-                <div class="event-item">
+                <div class="event-card">
+                    <a class="cal-mini" target="_blank" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Reception:+Anjan+%26+Chandana&dates=20260505T130000Z/20260505T170000Z&details=Grand+Reception+at+Padmavati+Convention+Center&location=Padmavati+Convention+Center,+RR+Nagar,+Bengaluru">
+                        <i class="far fa-calendar-plus"></i>
+                    </a>
                     <h6>Grand Reception</h6>
                     <p>May 5, 2026 | 6:30 PM Onwards</p>
                 </div>
-                <div class="event-item">
+
+                <div class="event-card">
+                    <a class="cal-mini" target="_blank" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Wedding:+Anjan+%26+Chandana&dates=20260506T170000Z/20260506T200000Z&details=Sacred+Wedding+Ceremony+(Lagna)&location=Padmavati+Convention+Center,+RR+Nagar,+Bengaluru">
+                        <i class="far fa-calendar-plus"></i>
+                    </a>
                     <h6>Wedding Ceremony</h6>
                     <p>May 6, 2026 | 10:30 PM Onwards</p>
                 </div>
             </div>
 
-            <div class="food-badge">
+            <div class="food-tag">
                 <i class="fas fa-leaf text-success"></i>
                 Traditional South Indian Feast Served
             </div>
 
-            <div class="countdown">
-                <div class="unit"><span id="d">00</span><label>Days</label></div>
-                <div class="unit"><span id="h">00</span><label>Hrs</label></div>
-                <div class="unit"><span id="m">00</span><label>Mins</label></div>
-                <div class="unit"><span id="s">00</span><label>Secs</label></div>
+            <div class="timer">
+                <div class="unit"><span id="days">00</span><label>Days</label></div>
+                <div class="unit"><span id="hours">00</span><label>Hrs</label></div>
+                <div class="unit"><span id="mins">00</span><label>Mins</label></div>
+                <div class="unit"><span id="secs">00</span><label>Secs</label></div>
             </div>
 
-            <div class="venue-footer">
-                <h6 class="fw-bold mb-1" style="font-size:0.8rem;">Padmavati Convention Center</h6>
-                <p class="small text-muted mb-2">RR Nagar, Bengaluru</p>
-                <a href="https://maps.app.goo.gl/xy3HvhZPwPThxZDz6" target="_blank" class="btn-map">
-                    <i class="fas fa-location-arrow me-1"></i> VIEW LOCATION
+            <div class="venue-info">
+                <h6 class="fw-bold mb-0" style="font-size:0.85rem;">Padmavati Convention Center</h6>
+                <p class="small text-muted mb-2" style="font-size:0.7rem;">RR Nagar, Bengaluru</p>
+                <a href="https://maps.app.goo.gl/xy3HvhZPwPThxZDz6" target="_blank" class="btn-action">
+                    <i class="fas fa-location-arrow me-2"></i> GET DIRECTIONS
                 </a>
             </div>
         </div>
-
     </div>
 
     <script>
-        const target = new Date("May 5, 2026 18:30:00").getTime();
-        function update() {
+        // Countdown to Reception Start
+        const eventTime = new Date("May 5, 2026 18:30:00").getTime();
+        function runTimer() {
             const now = new Date().getTime();
-            const diff = target - now;
-            if (diff < 0) return;
-            document.getElementById("d").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
-            document.getElementById("h").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
-            document.getElementById("m").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-            document.getElementById("s").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            const d = eventTime - now;
+            if (d < 0) return;
+            document.getElementById("days").innerText = Math.floor(d / 86400000).toString().padStart(2,'0');
+            document.getElementById("hours").innerText = Math.floor((d % 86400000) / 3600000).toString().padStart(2,'0');
+            document.getElementById("mins").innerText = Math.floor((d % 3600000) / 60000).toString().padStart(2,'0');
+            document.getElementById("secs").innerText = Math.floor((d % 60000) / 1000).toString().padStart(2,'0');
         }
-        setInterval(update, 1000);
+        setInterval(runTimer, 1000);
 
-        const a = document.getElementById('bgMusic');
-        const i = document.getElementById('musicIcon');
+        // Music Logic
+        const audio = document.getElementById('bgMusic');
+        const icon = document.getElementById('musicIcon');
         let playing = false;
-        function initAudio() { if(!playing) { a.play(); playing=true; i.className="fas fa-pause"; } }
-        function toggleAudio(e) { e.stopPropagation(); if (a.paused) { a.play(); i.className="fas fa-pause"; } else { a.pause(); i.className="fas fa-music"; } }
+        function initAudio() { if(!playing) { audio.play(); playing=true; icon.className="fas fa-pause"; } }
+        function toggleAudio(e) { e.stopPropagation(); if (audio.paused) { audio.play(); icon.className="fas fa-pause"; } else { audio.pause(); icon.className="fas fa-music"; } }
     </script>
 </body>
 </html>
